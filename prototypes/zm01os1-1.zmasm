@@ -1,0 +1,28 @@
+
+	cli
+
+	/*// syntax variants:
+	r0 < "Hello from ZM01OS!"
+	r0 <: "Hello from ZM01OS!"
+	r0 <= "Hello from ZM01OS!"
+	r0 << "Hello from ZM01OS!"*/
+
+	mov r0 << "Hello from ZM01OS!"
+	mov r1 << 0xB8000
+
+.Loop:
+	mov r2 << [r0]
+	cmp r2 == 0
+	je .End
+	
+	mov [r1] << r2
+	
+	inc r0
+	inc r1
+	
+	jmp .Loop
+
+.End:
+	cli
+	hlt
+	jmp .End
