@@ -12,13 +12,13 @@
 
 .Loop:
 	ldrB r3 << [r1]
-	cmpB r3 == rz
+	cmp r3 == rz
 	je .End
 	
 	strB [r2] << r3
 	
 	addImmB r1 <<+ 1
-	addImmL r2 <<+ 1
+	addImmB r2 <<+ 1
 	
 	jmp .Loop
 
