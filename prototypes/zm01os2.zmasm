@@ -1,0 +1,44 @@
+#address = 0x100
+
+	cli
+	movRImmL sp << 0x1FFFF // (0x20000 - 1) // @TODO detect available memory?
+
+	movRImmL r1 << "Hello from ZM01OS 2!
+Type here: "
+	movRImmL r2 << 0xB8000
+
+.EchoLoop:
+	ldrB r3 << [r1]
+	cmp r3 == rz
+	je .EndEcho
+	
+	strB [r2] << r3
+	
+	addImmB r1 <<+ 1
+	addImmB r2 <<+ 1
+	
+	jmp .EchoLoop
+.EndEcho:
+
+	movRImmL r1 << 0x4
+	movRImmL r3 << .KeyboardInterrupt
+	strL [r1] << r3
+	sti
+	
+.InputLoop:
+	hlt
+	jmp .InputLoop
+	
+.KeyboardInterrupt:
+	cli
+	movRImmL r1 << 0x80
+	ldrB r3 << [r1]
+	strB [r2] << r3
+	addImmB r2 <<+ 1
+	sti
+	iret
+
+.Hang:
+	cli
+	hlt
+	jmp .Hang
