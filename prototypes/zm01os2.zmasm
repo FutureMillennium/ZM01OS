@@ -23,6 +23,11 @@ Type here: "
 	movRImmL r1 << 0x4
 	movRImmL r3 << .KeyboardInterrupt
 	strL [r1] << r3
+	
+	movRImmL r1 << 0xC8000
+	movRImmL r3 << 1
+	strB [r1] << r3
+	
 	sti
 	
 .InputLoop:
