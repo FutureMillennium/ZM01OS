@@ -1,0 +1,38 @@
+
+String input = "10 + +20 - -30 + 50 * 2";
+
+for (Char c = 0 .. input.length) {
+	Bool signSet = false;
+	
+	switch (c) {
+		case _'+' {
+			
+		}
+		case _'-' {
+			
+		}
+		case _'*' {
+			
+		}
+		case _'/' {
+			
+		}
+		case _'0' .. _'9' {
+		}
+		case _',', _'.' {
+			
+		}
+		case _' ', _\t, _\n, _\r { }
+		default {
+			
+		}
+		/*
+		case _'(' {
+			
+		}
+		case _')' {
+			
+		}
+		*/
+	}
+}
