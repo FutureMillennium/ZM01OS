@@ -1,21 +1,22 @@
 
 String input = "10 + +20 - -30 + 50 * 2";
 
-for (Char c = 0 .. input.length) {
-	Bool signSet = false;
-	
+for (Int i = 0 .. input.length) {
+	Char c = input[i];
+	Mode mode = First;
+
 	switch (c) {
 		case _'+' {
-			
+			obj.sign = Plus;
 		}
 		case _'-' {
-			
+			obj.sign = Minus;
 		}
 		case _'*' {
-			
+			if mode == First: error;
 		}
 		case _'/' {
-			
+			if mode == First: error;
 		}
 		case _'0' .. _'9' {
 		}
